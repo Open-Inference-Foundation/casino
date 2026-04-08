@@ -1,0 +1,132 @@
+# Ca$ino Builder — Full Content
+
+> Complete public-site content in Markdown form for LLM crawlers.
+
+Generated: 2026-04-08T22:00:37.694Z
+
+---
+
+## Ca$ino Builder — Home
+
+URL: https://casino.flowstack.fun/
+
+Type what you need. Get a production app with auth, a database, and an AI agent.
+
+---
+
+## Infer & AGENT Tokens
+
+URL: https://casino.flowstack.fun/infer
+
+
+
+---
+
+## Privacy Policy
+
+URL: https://casino.flowstack.fun/privacy
+
+Privacy Policy
+
+Last updated: April 1, 2026
+
+What Ca$ino is
+
+Ca$ino is an AI-powered web application builder. You describe what you want to build, and Ca$ino builds it. This policy explains how we collect and use data when you use Ca$ino.
+
+Information we collect
+
+Account information
+
+Prompts and builds
+
+Usage data
+
+How we use it
+
+To operate Ca$ino and deliver the apps you build.
+
+To authenticate you and protect your account.
+
+To improve the service — understanding how builders use Ca$ino helps us make it better.
+
+We do not sell your data. We do not use your prompts to train third-party models without your consent.
+
+Data storage
+
+Your account data and build artifacts are stored on AWS infrastructure (S3, DynamoDB) in us-east-1. Builds you publish are served via CloudFront CDN. Session tokens expire after 24 hours.
+
+Third-party services
+
+Google OAuth
+
+Anthropic / Claude
+
+AWS CloudFront
+
+Your rights
+
+You can delete your account at any time by contacting us. Deleting your account removes your personal information and build history. Published apps may remain accessible until manually removed.
+
+Contact
+
+---
+
+## Terms of Service
+
+URL: https://casino.flowstack.fun/terms
+
+Terms of Service
+
+Last updated: April 1, 2026
+
+Acceptance
+
+By using Ca$ino, you agree to these terms. If you don't agree, don't use it. Ca$ino is a tool for building web applications using AI — use it for that.
+
+What Ca$ino provides
+
+Ca$ino gives you an AI agent that generates and publishes web applications based on your instructions. Builds are hosted on Flowstack infrastructure. We reserve the right to take down content that violates these terms or applicable law.
+
+Your account
+
+You are responsible for maintaining the security of your account credentials.
+
+One account per person. Don't share accounts.
+
+You must be 13 years or older to use Ca$ino.
+
+Acceptable use
+
+You agree not to use Ca$ino to:
+
+Build applications designed to deceive, defraud, or harm others.
+
+Generate or distribute illegal content.
+
+Attempt to circumvent Ca$ino's rate limits or security measures.
+
+Resell or sublicense access to Ca$ino without permission.
+
+Build applications that violate third-party terms of service.
+
+Ownership
+
+You own the applications you build with Ca$ino. We don't claim ownership of your output. We own Ca$ino itself — the platform, the agent, and the infrastructure.
+
+Service availability
+
+Ca$ino is provided as-is. We'll try to keep it running but don't guarantee uptime. We may change, suspend, or discontinue features at any time. We're not liable for data loss or downtime — back up anything important.
+
+Limitation of liability
+
+Ca$ino is provided "as is" without warranty of any kind. To the maximum extent permitted by law, we're not liable for any indirect, incidental, or consequential damages arising from your use of the service.
+
+Changes
+
+We may update these terms. Continued use of Ca$ino after changes means you accept the new terms. Material changes will be communicated via email.
+
+Contact
+
+---
+

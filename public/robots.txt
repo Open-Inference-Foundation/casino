@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /workspace
+Disallow: /complete
+
+# P0-20 GEO: explicitly allow LLM crawlers. Casino wants to be cite-able by
+# ChatGPT, Claude, Perplexity, and Google's LLM indexes. Every generated app
+# ships with the same allow-list by default.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://casino.flowstack.fun/sitemap.xml

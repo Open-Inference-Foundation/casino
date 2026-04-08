@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Ca$ino Cyberpunk Theme ────────────────────────────── */
+  --color-bg: #050507;
+  --color-surface: #0d0d12;
+  --color-surface-alt: #12121a;
+  --color-border: #1e1e2e;
+  --color-border-hover: #2e2e44;
+  --color-text: #e2e0ff;
+  --color-text-secondary: #7070a0;
+  --color-text-tertiary: #323248;
+
+  /* Electric cyan — primary neon accent */
+  --color-accent: #00d8ff;
+  --color-accent-hover: #00b8d9;
+  --color-accent-light: #00101a;
+  --color-accent-glow: rgba(0, 216, 255, 0.12);
+
+  /* Hot pink — secondary highlight */
+  --color-accent-2: #ff2d78;
+  --color-accent-2-light: #1a0010;
+
+  /* Status */
+  --color-success: #22c55e;
+  --color-success-light: #0a1a0e;
+  --color-error: #ef4444;
+  --color-error-light: #1a0a0a;
+  --color-warning: #f59e0b;
+  --color-warning-light: #1a1200;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --header-height: 48px;
+  --statusbar-height: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #050507;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Workspace — full viewport ──────────────────────────── */
+.workspace-layout {
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr var(--statusbar-height);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.workspace-body {
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Mobile workspace ───────────────────────────────────── */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 52px; /* taller touch target on mobile */
+    --statusbar-height: 28px;
+  }
+
+  /* Panel tabs that replace the 3-column split on mobile */
+  .workspace-body {
+    position: relative; /* anchor for sidebar overlay */
+  }
+
+  /* Prevent double-tap zoom delay on interactive elements */
+  .workspace-layout button,
+  .workspace-layout input,
+  .workspace-layout textarea {
+    touch-action: manipulation;
+  }
+
+  /* Hide stage pipeline labels on mobile — just show spinner + status text */
+  .status-stages {
+    display: none;
+  }
+}
+
+/* ── Mobile drawer ──────────────────────────────────────── */
+.mobile-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(280px, 80vw);
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.mobile-drawer--open {
+  transform: translateX(0);
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Scrollable panel ───────────────────────────────────── */
+.panel-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.panel-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+/* ── Landing / Home ─────────────────────────────────────── */
+.landing-full {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes pulse-accent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.stage-pulse {
+  animation: pulse-accent 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: '▊';
+  margin-left: 1px;
+  animation: blink 1s step-start infinite;
+  color: var(--color-accent);
+  font-size: 0.85em;
+}
+
+/* Amber glow on focused input */
+.input-glow:focus-within {
+  box-shadow: 0 0 0 1px var(--color-accent), 0 0 20px var(--color-accent-glow);
+}

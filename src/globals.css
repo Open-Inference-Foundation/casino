@@ -1,0 +1,376 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Ca$ino — The Safest Casino in the World ─────────── */
+  /* Design tokens defined here are Tailwind-resolvable.    */
+  /* Light/dark switching uses CSS custom props on :root.   */
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --header-height: 48px;
+  --statusbar-height: 32px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHT MODE (default)
+   Warm ivory, deep navy text, gold accents — trusted & premium
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f3f0eb;
+  --color-border: #e2ddd5;
+  --color-border-hover: #c9c2b8;
+  --color-text: #1a1a2e;
+  --color-text-secondary: #6b6880;
+  --color-text-tertiary: #a8a4b4;
+
+  /* Gold — primary accent (trust, premium, value) */
+  --color-accent: #b8860b;
+  --color-accent-hover: #9a7209;
+  --color-accent-light: #fdf6e3;
+  --color-accent-glow: rgba(184, 134, 11, 0.12);
+
+  /* Emerald — secondary accent (safety, growth) */
+  --color-accent-2: #0d7c5f;
+  --color-accent-2-light: #e8f5f0;
+
+  /* Status */
+  --color-success: #16a34a;
+  --color-success-light: #dcfce7;
+  --color-error: #dc2626;
+  --color-error-light: #fee2e2;
+  --color-warning: #d97706;
+  --color-warning-light: #fef3c7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE
+   Deep navy, gold/amber accents — vault-like, secure
+   ═══════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --color-bg: #0c0f1a;
+  --color-surface: #141828;
+  --color-surface-alt: #1a1f33;
+  --color-border: #252a3e;
+  --color-border-hover: #353b55;
+  --color-text: #e8e6f0;
+  --color-text-secondary: #8b89a0;
+  --color-text-tertiary: #454360;
+
+  --color-accent: #d4a017;
+  --color-accent-hover: #b8860b;
+  --color-accent-light: #1a1608;
+  --color-accent-glow: rgba(212, 160, 23, 0.15);
+
+  --color-accent-2: #34d399;
+  --color-accent-2-light: #0a1a14;
+
+  --color-success: #22c55e;
+  --color-success-light: #0a1a0e;
+  --color-error: #ef4444;
+  --color-error-light: #1a0a0a;
+  --color-warning: #f59e0b;
+  --color-warning-light: #1a1200;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Workspace — full viewport ──────────────────────────── */
+.workspace-layout {
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr var(--statusbar-height);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.workspace-body {
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Mobile workspace ───────────────────────────────────── */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 52px;
+    --statusbar-height: 36px;
+  }
+
+  .workspace-body {
+    position: relative;
+  }
+
+  .workspace-layout button,
+  .workspace-layout input,
+  .workspace-layout textarea {
+    touch-action: manipulation;
+  }
+
+  .chat-input-bar {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Wallet browser overrides ──────────────────────────── */
+body.wallet-browser .chat-input-bar {
+  padding-bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+}
+body.wallet-browser .workspace-header {
+  padding-top: max(16px, env(safe-area-inset-top));
+}
+
+/* ── Touch targets (WCAG 44px minimum) ─────────────────── */
+@media (max-width: 767px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── Mobile drawer ──────────────────────────────────────── */
+.mobile-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(280px, 80vw);
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.mobile-drawer--open {
+  transform: translateX(0);
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Scrollable panel ───────────────────────────────────── */
+/* Overlay-style scrollbar: invisible at rest, fades in on hover over the
+   panel. Doesn't reserve horizontal space, so sidebars don't lose pixels to
+   a permanent track. This is the "baked in" look. */
+.panel-scroll {
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.2s ease;
+}
+
+.panel-scroll:hover,
+.panel-scroll:focus-within {
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* WebKit: overlay scrollbar, transparent until the panel is hovered. */
+.panel-scroll::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+}
+
+.panel-scroll:hover::-webkit-scrollbar-thumb,
+.panel-scroll:focus-within::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  background-clip: content-box;
+}
+
+.panel-scroll:hover::-webkit-scrollbar-thumb:hover,
+.panel-scroll:focus-within::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-tertiary);
+  background-clip: content-box;
+}
+
+/* ── Landing / Home ─────────────────────────────────────── */
+.landing-full {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes pulse-accent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.stage-pulse {
+  animation: pulse-accent 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: '\25CA';
+  margin-left: 2px;
+  animation: blink 1s step-start infinite;
+  color: var(--color-accent);
+  font-size: 0.75em;
+}
+
+/* Focus glow — warm gold instead of cyan */
+.input-glow:focus-within {
+  box-shadow: 0 0 0 1px var(--color-accent), 0 0 16px var(--color-accent-glow);
+}
+
+/* ── Theme toggle ──────────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE CHAT (/chat) — P0-43
+   ═══════════════════════════════════════════════════════════ */
+.mobile-chat-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: clip;              /* clip, not hidden — avoids scroll container that breaks compositing */
+  background-color: var(--color-bg);
+}
+
+.mobile-chat-header {
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: env(safe-area-inset-top) 16px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(48px + env(safe-area-inset-top));
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: relative;          /* NO sticky — flex-shrink:0 pins it; sticky breaks under overflow:hidden */
+  z-index: 10;
+  transform: translate3d(0, 0, 0);          /* force own GPU compositing layer */
+  -webkit-backface-visibility: hidden;       /* prevent iOS repaint flicker */
+}
+
+.mobile-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-left: 16px;
+  padding-right: 16px;
+  transform: translate3d(0, 0, 0);          /* separate compositing layer from header */
+}
+
+.mobile-chat-input-wrapper {
+  flex-shrink: 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+@keyframes thinking-dot {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+/* ── ChatGPT-style message overrides inside /chat ──────── */
+
+/* Hide assistant avatar circle */
+.mobile-chat-messages > div > div.rounded-full:first-child {
+  display: none !important;
+}
+
+/* Assistant bubble → plain text, no background, full width */
+.mobile-chat-messages > div.justify-start > div.rounded-2xl {
+  max-width: 100% !important;
+  background: transparent !important;
+  padding: 4px 0 !important;
+  border-radius: 0 !important;
+}
+
+/* User bubble → subtle gray instead of heavy gold */
+.mobile-chat-messages > div.justify-end > div.rounded-2xl {
+  background: var(--color-surface-alt) !important;
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .mobile-chat-messages > div.justify-end > div.rounded-2xl {
+  background: var(--color-surface-alt) !important;
+  color: var(--color-text) !important;
+}

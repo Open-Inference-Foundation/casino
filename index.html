@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+
+    <!-- Google Fonts (replaces next/font/google) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap"
+    />
+
+    <!-- Favicon + brand assets (Ca$ino gold-on-black "$" mark, replaces Next.js default) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Baseline SEO defaults (overridden per-page by <SEO> component) -->
+    <title>Ca$ino Builder — Describe an app, get a live URL</title>
+    <meta
+      name="description"
+      content="Describe what you need. Get a production app with auth, a database, and an AI agent — deployed in minutes. 60 free credits daily."
+    />
+    <link rel="canonical" href="https://casino.flowstack.fun/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ca$ino Builder — Describe an app, get a live URL" />
+    <meta
+      property="og:description"
+      content="Describe what you need. Get a production app with auth, a database, and an AI agent — deployed in minutes."
+    />
+    <meta property="og:url" content="https://casino.flowstack.fun/" />
+    <meta property="og:image" content="https://casino.flowstack.fun/og-image.png" />
+    <meta property="og:site_name" content="Ca$ino Builder" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ca$ino Builder" />
+    <meta
+      name="twitter:description"
+      content="Describe what you need. Get a production app with auth, database, and AI agent — deployed in minutes."
+    />
+    <meta name="twitter:image" content="https://casino.flowstack.fun/og-image.png" />
+
+    <!-- P0-20 GEO: JSON-LD Organization schema for LLM + search extraction -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ca$ino Builder",
+        "alternateName": "Casino",
+        "url": "https://casino.flowstack.fun/",
+        "logo": "https://casino.flowstack.fun/favicon.ico",
+        "description": "AI-powered application builder. Describe what you need and get a production app with auth, database, and an AI agent in minutes.",
+        "sameAs": []
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ca$ino Builder",
+        "url": "https://casino.flowstack.fun/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://casino.flowstack.fun/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+  <body class="h-full antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

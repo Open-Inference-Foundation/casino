@@ -1,0 +1,40 @@
+# Ca$ino Builder
+
+> AI-powered application builder. Describe what you need and get a production app with auth, database, and an AI agent — deployed in minutes on AWS.
+
+Ca$ino turns a single English prompt into a running web application. The builder handles authentication, a MongoDB database, a Flowstack SDK-based frontend, and an AI agent — all pre-wired. Output is a live URL on `*.casino.flowstack.fun` served from S3 + CloudFront.
+
+## What Ca$ino builds
+
+Every generated app is a Vite + React + TypeScript SPA with:
+
+- User auth (email + password or Google OAuth or Sign-In-With-Ethereum)
+- A MongoDB database with CRUD hooks (`useCollection`)
+- An AI chat agent (`useAgent`) wired to the app's data
+- A semantic HTML page layout with SEO + GEO baseline
+- Pre-rendered HTML, sitemap.xml, robots.txt, llms.txt — indexable and cite-able by default
+
+## Pricing
+
+- Free tier: 60 credits per day
+- $15: 160 credits (starter)
+- $49: 550 credits (builder)
+- $99: 1200 credits (scale)
+
+Each build costs ~60 credits. Each edit costs ~25 credits. Each chat message costs ~1 credit.
+
+## Token economics (the $AGENT story)
+
+Every interaction inside a Casino-generated app earns $AGENT tokens on Arbitrum. Builders get paid when people use their apps. Users who stake INFER tokens get cheaper AI inference across the ecosystem. See `/infer` for the full model.
+
+## Key pages
+
+- [Landing](https://casino.flowstack.fun/) — describe an app, start building
+- [Infer / Token economics](https://casino.flowstack.fun/infer) — INFER + AGENT token model explained
+- [Privacy](https://casino.flowstack.fun/privacy) — data handling, third parties, your rights
+- [Terms](https://casino.flowstack.fun/terms) — terms of service
+
+## Contact
+
+- Email: keon.cummings@gmail.com
+- Built by: Flowstack
